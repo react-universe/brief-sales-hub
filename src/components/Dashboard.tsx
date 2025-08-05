@@ -14,7 +14,6 @@ import { MetricsDialog } from './MetricsDialog';
 
 interface Prospect {
   id: string;
-  user_id: string;
   full_name: string;
   email: string;
   phone?: string;
@@ -94,10 +93,7 @@ export function Dashboard() {
     try {
       const { error } = await supabase
         .from('prospects')
-        .update({ 
-          stage: newStage,
-          user_id: user?.id // Include user_id for RLS policy
-        })
+        .update({ stage: newStage })
         .eq('id', draggableId);
 
       if (error) throw error;
