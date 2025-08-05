@@ -177,38 +177,41 @@ export function Dashboard() {
       {/* Header */}
       <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 py-4 sm:py-0 sm:h-16">
             <div className="flex items-center gap-3">
               <div className="flex items-center justify-center w-10 h-10 bg-primary rounded-lg">
                 <Building2 className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
                 <h1 className="text-xl font-bold">Micro CRM</h1>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground hidden sm:block">
                   Welcome back, {user?.user_metadata?.full_name || user?.email}
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <Button 
                 variant="outline" 
                 onClick={() => setShowMetrics(true)}
-                className="border-primary/20 hover:bg-primary/5"
+                className="border-primary/20 hover:bg-primary/5 flex-1 sm:flex-none"
+                size="sm"
               >
-                <TrendingUp className="w-4 h-4 mr-2" />
-                Metrics
+                <TrendingUp className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Metrics</span>
               </Button>
               <Button 
                 onClick={() => setShowAddDialog(true)}
-                className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary"
+                className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary flex-1 sm:flex-none"
+                size="sm"
               >
-                <Plus className="w-4 h-4 mr-2" />
-                Add Prospect
+                <Plus className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Add Prospect</span>
               </Button>
               <Button 
                 variant="ghost" 
                 onClick={signOut}
                 className="text-muted-foreground hover:text-foreground"
+                size="sm"
               >
                 <LogOut className="w-4 h-4" />
               </Button>
@@ -220,7 +223,7 @@ export function Dashboard() {
       {/* Pipeline */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <DragDropContext onDragEnd={handleDragEnd}>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {Object.entries(stageConfig).map(([stage, config]) => {
               const stageProspects = prospects.filter(p => p.stage === stage);
               const Icon = config.icon;
@@ -251,7 +254,7 @@ export function Dashboard() {
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={`min-h-[400px] p-4 rounded-xl border-2 border-dashed transition-colors ${
+                        className={`min-h-[300px] md:min-h-[400px] p-3 md:p-4 rounded-xl border-2 border-dashed transition-colors ${
                           snapshot.isDraggingOver 
                             ? 'border-primary bg-primary/5' 
                             : 'border-border/30 bg-transparent'

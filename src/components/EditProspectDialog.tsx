@@ -97,7 +97,7 @@ export function EditProspectDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Edit Prospect</DialogTitle>
           <DialogDescription>
@@ -195,7 +195,7 @@ export function EditProspectDialog({
             />
           </div>
           
-          <div className="flex justify-between items-center pt-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 pt-4">
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button 
@@ -203,41 +203,45 @@ export function EditProspectDialog({
                   variant="destructive" 
                   size="sm"
                   disabled={isLoading || isDeleting}
-                  className="bg-destructive hover:bg-destructive/90"
+                  className="bg-destructive hover:bg-destructive/90 w-full sm:w-auto"
                 >
                   <Trash2 className="w-4 h-4 mr-2" />
                   Delete
                 </Button>
               </AlertDialogTrigger>
-              <AlertDialogContent>
+              <AlertDialogContent className="max-w-[95vw] sm:max-w-lg">
                 <AlertDialogHeader>
                   <AlertDialogTitle>Delete Prospect</AlertDialogTitle>
                   <AlertDialogDescription>
                     Are you sure you want to delete {prospect.full_name}? This action cannot be undone.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleDelete} className="bg-destructive hover:bg-destructive/90">
+                <AlertDialogFooter className="flex-col sm:flex-row gap-2">
+                  <AlertDialogCancel className="w-full sm:w-auto">Cancel</AlertDialogCancel>
+                  <AlertDialogAction 
+                    onClick={handleDelete} 
+                    className="bg-destructive hover:bg-destructive/90 w-full sm:w-auto"
+                  >
                     {isDeleting ? "Deleting..." : "Delete"}
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
             
-            <div className="flex gap-3">
+            <div className="flex gap-3 w-full sm:w-auto">
               <Button 
                 type="button" 
                 variant="outline" 
                 onClick={() => onOpenChange(false)}
                 disabled={isLoading}
+                className="flex-1 sm:flex-none"
               >
                 Cancel
               </Button>
               <Button 
                 type="submit" 
                 disabled={isLoading}
-                className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary"
+                className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary flex-1 sm:flex-none"
               >
                 {isLoading ? "Updating..." : "Update Prospect"}
               </Button>
