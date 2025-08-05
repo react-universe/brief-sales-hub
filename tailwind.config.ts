@@ -26,7 +26,9 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					light: 'hsl(var(--primary-light))',
+					dark: 'hsl(var(--primary-dark))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -51,6 +53,17 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				status: {
+					new: 'hsl(var(--status-new))',
+					'new-foreground': 'hsl(var(--status-new-foreground))',
+					'new-light': 'hsl(var(--status-new-light))',
+					'in-talks': 'hsl(var(--status-in-talks))',
+					'in-talks-foreground': 'hsl(var(--status-in-talks-foreground))',
+					'in-talks-light': 'hsl(var(--status-in-talks-light))',
+					closed: 'hsl(var(--status-closed))',
+					'closed-foreground': 'hsl(var(--status-closed-foreground))',
+					'closed-light': 'hsl(var(--status-closed-light))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
