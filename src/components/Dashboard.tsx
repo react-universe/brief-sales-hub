@@ -96,7 +96,7 @@ export function Dashboard() {
         .from('prospects')
         .update({ 
           stage: newStage,
-          user_id: user?.id // Include user_id for RLS policy
+          // user_id: user?.id // Include user_id for RLS policy
         })
         .eq('id', draggableId);
 
